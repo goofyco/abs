@@ -1,0 +1,37 @@
+import random, logging
+
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Start of Program')
+
+guess = ''
+print('Guess the coin toss! Enter heads or tails:')
+guess = input()
+while guess not in ('heads', 'tails'):
+    logging.debug('Guess must be "heads" or "tails".')
+    print('Guess must be "heads" or "tails"! Enter heads or tails:')
+    guess = input()
+    
+toss = random.randint(0, 1) # 0 is tails, 1 is heads
+if toss == 1:
+    toss = 'heads'
+elif toss == 0:
+    toss = 'tails'
+logging.debug('The toss is: ' + toss)
+
+
+if guess == toss:
+    print('You got it!')
+else:
+    print('Nope! Guess again!')
+    guess = input()
+    
+    while guess not in ('heads', 'tails'):
+        print('Guess must be "heads" or "tails"! Enter heads or tails:')
+        guess = input()
+        
+    if guess == toss:
+        print('You got it!')
+    else:
+        print('Nope. You are really bad at this game.')
+        
+logging.debug('End of Program')
